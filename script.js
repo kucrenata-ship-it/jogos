@@ -1,98 +1,75 @@
-let personagemAtual = "girl";
+let gols = 0;
+let defesas = 0;
 
-// Escolhe o personagem
-document.getElementById("personagem").addEventListener("change", function(){
+function bater(lado){
 
-    personagemAtual = this.value;
+    const goleiro = document.getElementById("goleiro");
+    const bola = document.getElementById("bola");
+    const resultado = document.getElementById("resultado");
 
-});
+    // Posições possíveis
+    const posicoes = {
+        esquerda:{
+            goleiro:"110px",
+            bola:"120px"
+        },
+        meio:{
+            goleiro:"210px",
+            bola:"225px"
+        },
+        direita:{
+            goleiro:"320px",
+            bola:"330px"
+        }
+    };
 
-// Troca a roupa
-function trocarRoupa(cor){
+    // Escolha aleatória do goleiro
+    let lados = ["esquerda","meio","direita"];
+    let defesa = lados[Math.floor(Math.random()*3)];
 
-    let roupa;
+    // Move o goleiro
+    goleiro.style.left = posicoes[defesa].goleiro;
 
-    if(personagemAtual == "girl"){
+    // Move a bola
+    bola.style.left = posicoes[lado].bola;
+    bola.style.bottom = "170px";
 
-        roupa = document.querySelector(".roupaGirl");
+    // Resultado
+    setTimeout(function(){
 
-    }else{
+        if(lado == defesa){
 
-        roupa = document.querySelector(".roupaBoy");
+            resultado.innerHTML = "🧤 DEFENDEU!!";
 
-    }
+            resultado.style.color = "#ff4d4d";
 
-    if(cor == "rosa"){
+            defesas++;
 
-        roupa.style.background = "#ff69b4";
+            document.getElementById("defesas").innerHTML = defesas;
 
-    }
+        }else{
 
-    if(cor == "azul"){
+            resultado.innerHTML = "⚽ GOOOOOOLLLLL!!";
 
-        roupa.style.background = "#4da6ff";
+            resultado.style.color = "#00ff66";
 
-    }
+            gols++;
 
-    if(cor == "verde"){
-
-        roupa.style.background = "#32cd32";
-
-    }
-
-}
-
-// Finaliza o look
-function finalizarLook(){
-
-    let nota = Math.floor(Math.random()*3)+8; // 8 a 10
-
-    let mensagens = [
-
-        "🌟 Arrasou! Esse look ficou incrível!",
-        "💖 Que combinação linda!",
-        "✨ Estilo nota 10!",
-        "😎 Super fashion!",
-        "👗 Esse look faria sucesso na passarela!",
-        "🔥 Muito estiloso!",
-        "🎉 Parabéns! Você criou um look maravilhoso!"
-
-    ];
-
-    let mensagem = mensagens[Math.floor(Math.random()*mensagens.length)];
-
-    document.getElementById("resultado").innerHTML =
-
-    `
-    <h2>🏆 Resultado</h2>
-
-    <br>
-
-    <h1>${nota}/10 ⭐</h1>
-
-    <br>
-
-    <p>${mensagem}</p>
-
-    `;
-
-    // Pequena animação
-    document.getElementById("resultado").animate(
-
-        [
-
-            {transform:"scale(0.8)"},
-            {transform:"scale(1.08)"},
-            {transform:"scale(1)"}
-
-        ],
-
-        {
-
-            duration:600
+            document.getElementById("gols").innerHTML = gols;
 
         }
 
-    );
+    },500);
+
+    // Reinicia posição
+    setTimeout(function(){
+
+        goleiro.style.left = "210px";
+
+        bola.style.left = "225px";
+
+        bola.style.bottom = "15px";
+
+    },1800);
 
 }
