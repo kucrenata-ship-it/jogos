@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fashion Game</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>👗 Fashion Game 👕</h1>
+
+<p>Escolha um personagem e monte um look incrível!</p>
+
+</header>
+
+<div class="container">
+
+<div class="personagem">
+
+<h2>👧 Menina</h2>
+
+<div id="girl" class="boneco">
+
+<div class="cabeca"></div>
+
+<div class="corpo roupaGirl"></div>
+
+<div class="pernas"></div>
+
+</div>
+
+</div>
+
+<div class="personagem">
+
+<h2>👦 Menino</h2>
+
+<div id="boy" class="boneco">
+
+<div class="cabeca"></div>
+
+<div class="corpo roupaBoy"></div>
+
+<div class="pernas"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="painel">
+
+<h2>🎨 Escolha o Personagem</h2>
+
+<select id="personagem">
+
+<option value="girl">Menina</option>
+
+<option value="boy">Menino</option>
+
+</select>
+
+<h2>👕 Escolha a Roupa</h2>
+
+<div class="roupas">
+
+<button onclick="trocarRoupa('rosa')">
+💗 Vestido Rosa
+</button>
+
+<button onclick="trocarRoupa('azul')">
+💙 Roupa Azul
+</button>
+
+<button onclick="trocarRoupa('verde')">
+💚 Roupa Verde
+</button>
+
+</div>
+
+<button class="finalizar" onclick="finalizarLook()">
+
+✨ Finalizar Look
+
+</button>
+
+</div>
+
+<div id="resultado">
+
+Monte um look e clique em <b>Finalizar Look</b>.
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
